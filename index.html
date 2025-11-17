@@ -47,7 +47,7 @@
               for all. We offer a range of services designed to promote accessibility awareness, drive inclusivity, and enhance the user experience. And help you find answers on How do people with
               disabilities use technology and navigate the digital world? What tools do they employ?
             </p>
-            <button>the Empower Community!</button>
+            <button type="button" onclick="openDialog('dialog1', this)">the Empower Community!</button>
             <div class="row">
               <div class="col-md-4">
                 <h3>Our Approach</h3>
@@ -172,6 +172,25 @@
       <p>Copyright Accessible Knowledge Base 2023</p>
     </footer>
 
+    <div id="dialog_layer" class="dialogs">
+      <div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
+        <h2 id="dialog1_label" class="dialog_label">Community Steering Committee</h2>
+        <div class="row">
+          <p>
+            We get an aha! moments from product managers who try our services for the first time. We offered many lab days, workshops and offered usability testing services to many companies and
+            organizations including:
+          </p>
+        </div>
+        <ol>
+          <li>McGill University</li>
+          <li>Walmart.ca</li>
+          <li>Apple.ca</li>
+          <li>Google.ca</li>
+          <li>Government of Canada</li>
+        </ol>
+        <button type="button" onclick="closeDialog(this)">Close</button>
+      </div>
+    </div>
     <script src="EmpowerAbilityLab.js"></script>
   </body>
 </html>
