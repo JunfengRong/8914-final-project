@@ -230,3 +230,22 @@ body {
 .has-dialog {
   overflow: hidden;
 }
+
+
+/* Schedule Form Accessibility */
+#eventSection[hidden] {
+  display: none;
+}
+
+#eventSection:not([hidden]) {
+  display: block;
+}
+
+/* Ensure form feedback is accessible */
+.form-control:invalid {
+  border-color: #dc3545;
+}
+
+.form-control:valid {
+  border-color: #28a745;
+}

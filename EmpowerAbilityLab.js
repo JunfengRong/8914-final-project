@@ -619,3 +619,40 @@ aria.Utils.bindMethods = function (object /* , ...methodNames */) {
     object[method] = object[method].bind(object);
   });
 };
+
+
+/**
+ * @class
+ * @description Manages the Schedule a Call form with conditional display
+ * of the "Please tell us about your event" textarea
+ */
+class ScheduleForm {
+  constructor() {
+    this.check2 = document.getElementById('check2');
+    this.eventSection = document.getElementById('eventSection');
+    
+    // Add event listener to checkbox
+    if (this.check2 && this.eventSection) {
+      this.check2.addEventListener('change', this.onCheck2Change.bind(this));
+    }
+  }
+  
+  onCheck2Change(event) {
+    // Show/hide the event textarea based on checkbox state
+    if (event.target.checked) {
+      this.eventSection.hidden = false;
+      this.eventSection.setAttribute('aria-hidden', 'false');
+    } else {
+      this.eventSection.hidden = true;
+      this.eventSection.setAttribute('aria-hidden', 'true');
+    }
+  }
+}
+
+// Initialize the form when the page loads
+window.addEventListener('load', function () {
+  // Existing code...
+  
+  // Initialize Schedule Form
+  new ScheduleForm();
+});
