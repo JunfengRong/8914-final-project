@@ -144,7 +144,9 @@
             <div class="mb-3 row">
               <label for="email" class="col-sm-3 col-form-label">Email:(required)</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" id="email" required />
+                <!-- Added aria-invalid to indicate validity state, aria-describedby to link error message div -->
+                <input type="email" class="form-control" id="email" required aria-invalid="false" aria-describedby="emailError" />
+                <div id="emailError" class="invalid-feedback" role="alert" aria-live="polite"></div>
               </div>
             </div>
             <h3>What would you like to talk about:</h3>
@@ -171,7 +173,7 @@
               <input class="form-check-input" type="checkbox" role="switch" id="receiveUpdates" checked />
               <label class="form-check-label" for="receiveUpdates">Receive emails about updates and services</label>
             </div>
-            <button type="button" class="btn btn-primary" id="scheduleButton">Schedule a call</button>
+            <button type="button" class="btn btn-primary" id="scheduleButton" aria-busy="false">Schedule a call</button>
           </div>
         </div>
       </div>
@@ -200,6 +202,19 @@
         </ul>
         <button type="button" onclick="closeDialog(this)">Close</button>
       </div>
+    </div>
+    <!-- Email error dialog -->
+    <div role="dialog" id="dialogEmailError" aria-labelledby="dialogEmailError_label" aria-modal="true" class="hidden">
+      <h2 id="dialogEmailError_label" class="dialog_label">Validation Error</h2>
+      <p id="emailErrorMessage"></p>
+      <button type="button" onclick="closeDialog(this)">Close</button>
+    </div>
+
+    <!-- Success message dialog -->
+    <div role="dialog" id="dialogSuccess" aria-labelledby="dialogSuccess_label" aria-modal="true" class="hidden">
+      <h2 id="dialogSuccess_label" class="dialog_label">Thank You!</h2>
+      <p id="successMessage"></p>
+      <button type="button" onclick="closeDialog(this)">Close</button>
     </div>
     <script src="EmpowerAbilityLab.js"></script>
   </body>
