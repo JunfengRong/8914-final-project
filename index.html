@@ -19,11 +19,11 @@
 
   <body>
     <header class="navbar navbar-expand-md">
-      <a class="navbar-brand" href="https://www.google.ca/"><img src="./images/empowerabilitylabslogo.png" alt="logo" width="120" /></a>
-      <nav>
+      <!-- Description to alt text since it is the only website text-->
+      <a class="navbar-brand" href="https://www.google.ca/"><img src="./images/empowerabilitylabslogo.png" alt="Empower Ability Labs Logo" width="120" /></a>
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
           <div role="tablist" aria-labelledby="tablist-1" class="automatic manual">
-            <button id="home" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-1" tabindex="-1">
+            <button id="home" type="button" role="tab" aria-selected="true" aria-controls="tabpanel-1" tabindex="0">
               <span class="focus">Home</span>
             </button>
             <button id="service" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-2" tabindex="-1">
@@ -34,23 +34,26 @@
             </button>
           </div>
         </div>
-      </nav>
     </header>
     <main>
       <!-- Main landing view -->
       <div class="jumbotron">
         <div class="container">
-          <div id="tabpanel-1" role="tabpanel" aria-labelledby="tab-1" class="is-hidden">
-            <h1 class="h2">Welcome to Empower Ability Labs!</h1>
+          <!-- Correct aria-labelledby to match the tab button id -->
+          <section id="tabpanel-1" role="tabpanel" aria-labelledby="home" class="is-hidden">
+            <!-- Removed H2 class -->
+            <h1>Welcome to Empower Ability Labs!</h1>
             <p>
               Welcome to Empower Ability Labs! Empower Ability Labs is a hub for learning and empathy-building. We are on a mission to foster understanding and promote inclusive digital experiences
               for all. We offer a range of services designed to promote accessibility awareness, drive inclusivity, and enhance the user experience. And help you find answers on How do people with
               disabilities use technology and navigate the digital world? What tools do they employ?
             </p>
-            <button type="button" onclick="openDialog('dialog1', this)">the Empower Community!</button>
+            <!-- Changed button text to better describe what it is -->
+            <button type="button" onclick="openDialog('dialog1', this)">Meet The Empower Community!</button>
             <div class="row">
               <div class="col-md-4">
-                <h3>Our Approach</h3>
+                <!-- h3 to h2 -->
+                <h2>Our Approach</h2>
                 <p>
                   Empower Ability Labs utilizes a hands-on approach to raise awareness and promote empathy. Our immersive workshops and lab days provide participants with a unique opportunity to step
                   into the shoes of individuals with disabilities and navigate the world from their perspective.
@@ -58,17 +61,20 @@
                 <a href="https://www.google.com/search/howsearchworks/our-approach/">Learn more</a>
               </div>
               <div class="col-md-4">
-                <h3>Services</h3>
+                <!-- h3 to h2 -->
+                <h2>Services</h2>
                 <p>Promote accessibility awareness and enhance the user experience.</p>
-                <ol>
+                <!-- Changed this to an unordered list -->
+                <ul>
                   <li>Empathy lab days and workshops</li>
                   <li>Go beyond WCAG compliance!</li>
                   <li>Inspirational speakers.</li>
-                </ol>
+                </ul>
                 <a href="https://www.elevenways.be/en/services">Learn more</a>
               </div>
               <div class="col-md-4">
-                <h3>Testimonials</h3>
+                <!-- h3 to h2-->
+                <h2>Testimonials</h2>
                 <p>
                   Invite a speaker with disabilities to share their unique journey. This captivating addition to your upcoming event will offer insights that resonate, inspire, educate, and enrich
                   your team’s understanding of inclusion.
@@ -76,8 +82,9 @@
                 <a href="https://dictionary.cambridge.org/us/dictionary/english/testimonial">Learn more</a>
               </div>
             </div>
-          </div>
-          <div id="tabpanel-2" role="tabpanel" aria-labelledby="tab-2" class="is-hidden">
+          </section>
+          <!-- Correct aria-labelledby to match the tab button id -->
+          <div id="tabpanel-2" role="tabpanel" aria-labelledby="service" class="is-hidden">
             <div class="row">
               <h1>Services content architecture</h1>
               <div class="col-10">
@@ -113,7 +120,8 @@
               </p>
             </div>
           </div>
-          <div id="tabpanel-3" role="tabpanel" aria-labelledby="tab-3" class="is-hidden">
+          <!-- Correct aria-labelledby to match the tab button id -->
+          <div id="tabpanel-3" role="tabpanel" aria-labelledby="schedule" class="is-hidden">
             <h1>Schedule a call content architecture</h1>
             <div class="row">
               <div class="col-10">
@@ -181,13 +189,14 @@
             organizations including:
           </p>
         </div>
-        <ol>
+        <!-- Changed to unordered list -->
+        <ul>
           <li>McGill University</li>
           <li>Walmart.ca</li>
           <li>Apple.ca</li>
           <li>Google.ca</li>
           <li>Government of Canada</li>
-        </ol>
+        </ul>
         <button type="button" onclick="closeDialog(this)">Close</button>
       </div>
     </div>
