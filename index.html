@@ -132,13 +132,13 @@
             <div class="mb-3 row">
               <label for="businessName" class="col-sm-3 col-form-label">Business Name:</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" id="businessName" />
+                <input type="text" class="form-control" id="businessName" aria-label="Business Name" />
               </div>
             </div>
             <div class="mb-3 row">
               <label for="phoneNumber" class="col-sm-3 col-form-label">Phone number (613-123-1234):</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" id="phoneNumber" />
+                <input type="text" class="form-control" id="phoneNumber" aria-label="Phone number, format 613-123-1234" />
               </div>
             </div>
             <div class="mb-3 row">
@@ -151,17 +151,17 @@
             </div>
             <h3>What would you like to talk about:</h3>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="check1" />
+              <input class="form-check-input" type="checkbox" value="" id="check1" aria-label="Awareness lab days and workshops" />
               <label class="form-check-label" for="check1">Awareness lab days and workshops</label>
             </div>
             <div class="form-check">
               <!-- Added aria-controls to link checkbox to eventSection -->
-              <input class="form-check-input" type="checkbox" value="" id="check2" aria-controls="eventSection" />
+              <input class="form-check-input" type="checkbox" value="" id="check2" aria-controls="eventSection" aria-label="Invite a speaker with disabilities to your event" />
 
               <label class="form-check-label" for="check2">Invite a speaker with disabilities to your event</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="check3" />
+              <input class="form-check-input" type="checkbox" value="" id="check3" aria-label="Usability testing" />
               <label class="form-check-label" for="check3">Usability testing</label>
             </div>
             <div class="mb-3" id="eventSection" hidden>
@@ -170,7 +170,7 @@
               <textarea class="form-control" id="event" rows="3" aria-labelledby="eventLabel"></textarea>
             </div>
             <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" role="switch" id="receiveUpdates" checked />
+              <input class="form-check-input" type="checkbox" role="switch" id="receiveUpdates" checked aria-label="Receive emails about updates and services" />
               <label class="form-check-label" for="receiveUpdates">Receive emails about updates and services</label>
             </div>
             <button type="button" class="btn btn-primary" id="scheduleButton" aria-busy="false">Schedule a call</button>

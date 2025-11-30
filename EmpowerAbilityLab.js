@@ -635,6 +635,7 @@ class ScheduleForm {
     this.emailInput = document.getElementById('email');
     this.scheduleButton = document.getElementById('scheduleButton');
     this.emailError = document.getElementById('emailError');
+    this.receiveUpdates = document.getElementById('receiveUpdates');
     
     // Add event listeners
     if (this.check2 && this.eventSection) {
@@ -649,6 +650,11 @@ class ScheduleForm {
     if (this.scheduleButton) {
       this.scheduleButton.addEventListener('click', this.submitForm.bind(this));
     }
+    
+    if (this.receiveUpdates) {
+      this.receiveUpdates.addEventListener('change', this.updateSwitchLabel.bind(this));
+      this.updateSwitchLabel();
+    }
   }
   
   onCheck2Change(event) {
@@ -659,6 +665,13 @@ class ScheduleForm {
     } else {
       this.eventSection.hidden = true;
       this.eventSection.setAttribute('aria-hidden', 'true');
+    }
+  }
+  
+  updateSwitchLabel() {
+    const label = document.querySelector('.switch-label');
+    if (label) {
+      label.textContent = this.receiveUpdates.checked ? 'on' : 'off';
     }
   }
   
@@ -731,6 +744,7 @@ class ScheduleForm {
     document.getElementById('check3').checked = false;
     document.getElementById('event').value = '';
     document.getElementById('receiveUpdates').checked = true;
+    this.updateSwitchLabel();
     
     // Hide event section if it was shown
     if (this.eventSection && !this.eventSection.hidden) {
