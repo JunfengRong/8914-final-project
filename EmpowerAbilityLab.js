@@ -640,3 +640,4 @@ aria.Utils.bindMethods = function (object /* , ...methodNames */) {
   });
 };
 
+
