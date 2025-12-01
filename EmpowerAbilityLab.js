@@ -70,31 +70,31 @@ class TabsManual {
         var panel = this.tabpanels[i];
 
         if (currentTab === tab) {
-            // Update tab attributes
+            //Update tab attributes
             tab.setAttribute('aria-selected', 'true');
             tab.removeAttribute('tabindex');
 
-            // Show panel
+            //Show panel
             panel.classList.remove('is-hidden');
             panel.setAttribute('aria-hidden', 'false');
 
-            // Update document title (optional)
+            //Update document title (optional)
             var heading = panel.querySelector("h1");
             if (heading) {
                 document.title = heading.textContent;
             }
 
-            // Make panel focusable and move focus
+            //Make panel focusable and move focus
             if (!panel.hasAttribute('tabindex')) {
                 panel.setAttribute('tabindex', '0');
             }
             panel.focus();
         } else {
-            // Deselect other tabs
+            //Deselect other tabs
             tab.setAttribute('aria-selected', 'false');
             tab.tabIndex = -1;
 
-            // Hide other panels
+            //Hide other panels
             panel.classList.add('is-hidden');
             panel.setAttribute('aria-hidden', 'true');
         }
