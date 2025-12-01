@@ -3,9 +3,6 @@
 
 'use strict';
 
-var defaultService = "home"
-
-
 class TabsManual {
   constructor(groupNode) {
     console.log(111)
@@ -18,9 +15,6 @@ class TabsManual {
 
     this.tabs = Array.from(this.tablistNode.querySelectorAll('[role=tab]'));
     this.tabpanels = [];
-
-    var selectedObj = null
-    var service = location.hash.replace('#', '').trim();
 
     for (var i = 0; i < this.tabs.length; i += 1) {
       var tab = this.tabs[i];
@@ -37,69 +31,26 @@ class TabsManual {
         this.firstTab = tab;
       }
       this.lastTab = tab;
-      if (service === tab.getAttribute("id")){
-        selectedObj = tab
-      }
-      
-    }
-    if (selectedObj == null) {
-      selectedObj = this.firstTab
     }
 
-    this.setSelectedTab(selectedObj);
-
-    window.addEventListener('hashchange', () => {
-      var service = location.hash.replace('#', '');
-      console.log("hashchange, service = ",service)
-      if (service) {
-        for (var i = 0; i < this.tabs.length; i += 1) {
-          var tab = this.tabs[i]
-          if (service === tab.getAttribute("id")){
-            this.setSelectedTab(tab)
-          }
-        }
-      }
-    });
+    this.setSelectedTab(this.firstTab);
   }
-
-  
 
   setSelectedTab(currentTab) {
     for (var i = 0; i < this.tabs.length; i += 1) {
-        var tab = this.tabs[i];
-        var panel = this.tabpanels[i];
-
-        if (currentTab === tab) {
-            //Update tab attributes
-            tab.setAttribute('aria-selected', 'true');
-            tab.removeAttribute('tabindex');
-
-            //Show panel
-            panel.classList.remove('is-hidden');
-            panel.setAttribute('aria-hidden', 'false');
-
-            //Update document title
-            var heading = panel.querySelector("h1");
-            if (heading) {
-                document.title = heading.textContent;
-            }
-
-            //Make panel focusable and move focus
-            if (!panel.hasAttribute('tabindex')) {
-                panel.setAttribute('tabindex', '0');
-            }
-            panel.focus();
-        } else {
-            //Deselect other tabs
-            tab.setAttribute('aria-selected', 'false');
-            tab.tabIndex = -1;
-
-            //Hide other panels
-            panel.classList.add('is-hidden');
-            panel.setAttribute('aria-hidden', 'true');
-        }
+      var tab = this.tabs[i];
+      if (currentTab === tab) {
+        document.title = this.tabpanels[i].querySelector("h1").textContent
+        tab.setAttribute('aria-selected', 'true');
+        tab.removeAttribute('tabindex');
+        this.tabpanels[i].classList.remove('is-hidden');
+      } else {
+        tab.setAttribute('aria-selected', 'false');
+        tab.tabIndex = -1;
+        this.tabpanels[i].classList.add('is-hidden');
+      }
     }
-}
+  }
 
   moveFocusToTab(currentTab) {
     currentTab.focus();
@@ -167,11 +118,10 @@ class TabsManual {
   // Since this example uses buttons for the tabs, the click onr also is activated
   // with the space and enter keys
   onClick(event) {
-    location.hash = event.currentTarget.getAttribute("id");
-    // this.setSelectedTab(event.currentTarget);
+    this.setSelectedTab(event.currentTarget);
   }
 }
-var defaultService = "home"
+
 // Initialize tablist
 
 window.addEventListener('load', function () {
