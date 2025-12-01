@@ -81,3 +81,47 @@
 [role="tabpanel"] p {
   margin: 0;
 }
+
+/** Terry changes */
+/* ADDED: Hide elements */
+.is-hidden {
+  display: none !important;
+}
+
+/* ADDED: Modal Overlay */
+.custom-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* ADDED: Modal Content Box */
+.custom-modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  width: 450px;
+  max-width: 90%;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+/* ADDED: Switch image styling */
+.switch-image {
+  width: 70px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.image-switch-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 15px 0;
+}

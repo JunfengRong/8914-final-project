@@ -17,6 +17,33 @@
     <link rel="stylesheet" href="EmpowerAbilityLab.css" />
   </head>
 
+   <!-- Terry changes -->
+  <!-- ADDED: COMMUNITY MODAL -->
+<div id="communityModal" class="custom-modal is-hidden">
+  <div class="custom-modal-content">
+
+    <h2>Community Steering Committee</h2>
+    <p>
+      We get aha! moments from product managers who try our services for the first time.
+      We have provided lab days, workshops, and usability testing services to many organizations including:
+    </p>
+
+    <ul>
+      <li>McGill University</li>
+      <li>Walmart.ca</li>
+      <li>Apple.ca</li>
+      <li>Google.ca</li>
+      <li>Government of Canada</li>
+    </ul>
+
+    <!-- ADDED CLOSE BUTTON -->
+    <button id="closeCommunityModal" class="btn btn-danger mt-2">Close</button>
+  </div>
+</div>
+<!-- END ADDED MODAL -->
+  
+
+
   <body>
     <header class="navbar navbar-expand-md">
       <a class="navbar-brand" href="https://www.google.ca/"><img src="./images/empowerabilitylabslogo.png" alt="logo" width="120" /></a>
@@ -47,7 +74,8 @@
               for all. We offer a range of services designed to promote accessibility awareness, drive inclusivity, and enhance the user experience. And help you find answers on How do people with
               disabilities use technology and navigate the digital world? What tools do they employ?
             </p>
-            <button>the Empower Community!</button>
+             <!-- Terry changes -->
+            <button id="openCommunityModal" class="btn btn-primary">Meet the Empower Community!</button>
             <div class="row">
               <div class="col-md-4">
                 <h3>Our Approach</h3>
@@ -154,14 +182,30 @@
               <input class="form-check-input" type="checkbox" value="" id="check3" />
               <label class="form-check-label" for="check3">Usability testing</label>
             </div>
-            <div class="mb-3">
+
+            <!-- Terry changes-->
+            <!-- ADDED: This section is hidden by default -->
+            <div id="eventSection" class="mb-3 is-hidden">
               <label for="event" class="form-label">Please tell us about your event</label>
               <textarea class="form-control" id="event" rows="3"></textarea>
             </div>
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" role="switch" id="receiveUpdates" checked />
-              <label class="form-check-label" for="receiveUpdates">Receive emails about updates and services</label>
+
+            <!-- Terry changes-->
+            <!-- ADDED: IMAGE-BASED SWITCH -->
+            <div class="image-switch-container">
+              <label for="receiveUpdates" class="form-label">Receive emails about updates and services</label>
+
+              <img
+                id="switchImage"
+                src="./images/switch-off.png"
+                alt="switch button"
+                class="switch-image"
+              />
+
+              <input type="checkbox" id="receiveUpdates" class="d-none">
             </div>
+
+
             <button type="button" class="btn btn-primary">Schedule a call</button>
           </div>
         </div>

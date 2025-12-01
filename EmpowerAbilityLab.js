@@ -124,9 +124,60 @@ class TabsManual {
 
 // Initialize tablist
 
+//Terry changes
+
 window.addEventListener('load', function () {
   var tablists = document.querySelectorAll('[role=tablist].manual');
   for (var i = 0; i < tablists.length; i++) {
     new TabsManual(tablists[i]);
   }
+
+  //// ADDED CODE START — MODAL FUNCTIONALITY ////
+
+  const modal = document.getElementById("communityModal");
+  const openBtn = document.getElementById("openCommunityModal");
+  const closeBtn = document.getElementById("closeCommunityModal");
+
+  openBtn.addEventListener("click", () => {
+    modal.classList.remove("is-hidden");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.classList.add("is-hidden");
+  });
+
+  //// ADDED CODE END ////
+
+  //// ADDED CODE START — SWITCH BEHAVIOR ////
+
+  const switchImg = document.getElementById("switchImage");
+  const switchInput = document.getElementById("receiveUpdates");
+
+  switchImg.addEventListener("click", () => {
+    switchInput.checked = !switchInput.checked;
+
+    switchImg.src = switchInput.checked
+      ? "./images/switch-on.png"
+      : "./images/switch-off.png";
+  });
+
+  //// ADDED CODE END ////
+
+  //// ADDED CODE START — SHOW/HIDE TEXTAREA ////
+
+  const speakerCheckbox = document.getElementById("check2");
+  const eventSection = document.getElementById("eventSection");
+
+  eventSection.classList.add("is-hidden");
+
+  speakerCheckbox.addEventListener("change", () => {
+    if (speakerCheckbox.checked) {
+      eventSection.classList.remove("is-hidden");
+    } else {
+      eventSection.classList.add("is-hidden");
+    }
+  });
+
+  //// ADDED CODE END ////
 });
+
