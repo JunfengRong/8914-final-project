@@ -230,3 +230,71 @@ body {
 .has-dialog {
   overflow: hidden;
 }
+
+/* Custom Switch Styles */
+.form-check.form-switch {
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-check-input[role="switch"] {
+  width: 50px;
+  height: 28px;
+  border: 2px solid #ccc;
+  border-radius: 14px;
+  background-color: #ccc;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 2px;
+}
+
+.form-check-input[role="switch"]:checked {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.form-check-input[role="switch"]::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: left 0.3s ease;
+}
+
+.form-check-input[role="switch"]:checked::before {
+  left: 26px;
+}
+
+.switch-label {
+  font-weight: bold;
+  font-size: 14px;
+  min-width: 35px;
+}
+
+
+/* Schedule Form Accessibility */
+#eventSection[hidden] {
+  display: none;
+}
+
+#eventSection:not([hidden]) {
+  display: block;
+}
+
+/* Ensure form feedback is accessible */
+.form-control:invalid {
+  border-color: #dc3545;
+}
+
+.form-control:valid {
+  border-color: #28a745;
+}
