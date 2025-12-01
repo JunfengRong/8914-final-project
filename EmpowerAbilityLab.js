@@ -124,7 +124,7 @@ class TabsManual {
 
 // Initialize tablist
 
-//Terry changes
+//Terry changes goes here
 
 window.addEventListener('load', function () {
   var tablists = document.querySelectorAll('[role=tablist].manual');
