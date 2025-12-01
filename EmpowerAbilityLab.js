@@ -3,9 +3,6 @@
 
 'use strict';
 
-var defaultService = "home"
-
-
 class TabsManual {
   constructor(groupNode) {
     console.log(111)
@@ -18,9 +15,6 @@ class TabsManual {
 
     this.tabs = Array.from(this.tablistNode.querySelectorAll('[role=tab]'));
     this.tabpanels = [];
-
-    var selectedObj = null
-    var service = location.hash.replace('#', '').trim();
 
     for (var i = 0; i < this.tabs.length; i += 1) {
       var tab = this.tabs[i];
@@ -37,32 +31,10 @@ class TabsManual {
         this.firstTab = tab;
       }
       this.lastTab = tab;
-      if (service === tab.getAttribute("id")){
-        selectedObj = tab
-      }
-      
-    }
-    if (selectedObj == null) {
-      selectedObj = this.firstTab
     }
 
-    this.setSelectedTab(selectedObj);
-
-    window.addEventListener('hashchange', () => {
-      var service = location.hash.replace('#', '');
-      console.log("hashchange, service = ",service)
-      if (service) {
-        for (var i = 0; i < this.tabs.length; i += 1) {
-          var tab = this.tabs[i]
-          if (service === tab.getAttribute("id")){
-            this.setSelectedTab(tab)
-          }
-        }
-      }
-    });
+    this.setSelectedTab(this.firstTab);
   }
-
-  
 
   setSelectedTab(currentTab) {
     for (var i = 0; i < this.tabs.length; i += 1) {
@@ -99,7 +71,7 @@ class TabsManual {
             panel.setAttribute('aria-hidden', 'true');
         }
     }
-}
+  }
 
   moveFocusToTab(currentTab) {
     currentTab.focus();
@@ -167,11 +139,10 @@ class TabsManual {
   // Since this example uses buttons for the tabs, the click onr also is activated
   // with the space and enter keys
   onClick(event) {
-    location.hash = event.currentTarget.getAttribute("id");
-    // this.setSelectedTab(event.currentTarget);
+    this.setSelectedTab(event.currentTarget);
   }
 }
-var defaultService = "home"
+
 // Initialize tablist
 
 window.addEventListener('load', function () {
@@ -641,3 +612,144 @@ aria.Utils.bindMethods = function (object /* , ...methodNames */) {
 };
 
 
+/**
+ * @class
+ * @description Manages the Schedule a Call form with:
+ * - Conditional display of "Please tell us about your event"
+ * - Email validation
+ * - Success/Error message display via JS alert
+ */
+class ScheduleForm {
+  constructor() {
+    this.check2 = document.getElementById('check2');
+    this.eventSection = document.getElementById('eventSection');
+    this.emailInput = document.getElementById('email');
+    this.scheduleButton = document.getElementById('scheduleButton');
+    this.emailError = document.getElementById('emailError');
+    this.receiveUpdates = document.getElementById('receiveUpdates');
+    
+    // Add event listeners
+    if (this.check2 && this.eventSection) {
+      this.check2.addEventListener('change', this.onCheck2Change.bind(this));
+    }
+    
+    if (this.emailInput) {
+      this.emailInput.addEventListener('blur', this.validateEmail.bind(this));
+      this.emailInput.addEventListener('input', this.clearEmailError.bind(this));
+    }
+    
+    if (this.scheduleButton) {
+      this.scheduleButton.addEventListener('click', this.submitForm.bind(this));
+    }
+    
+    if (this.receiveUpdates) {
+      this.receiveUpdates.addEventListener('change', this.updateSwitchLabel.bind(this));
+      this.updateSwitchLabel();
+    }
+  }
+  
+  onCheck2Change(event) {
+    // Show/hide the event textarea based on checkbox state
+    if (event.target.checked) {
+      this.eventSection.hidden = false;
+      this.eventSection.setAttribute('aria-hidden', 'false');
+    } else {
+      this.eventSection.hidden = true;
+      this.eventSection.setAttribute('aria-hidden', 'true');
+    }
+  }
+  
+  updateSwitchLabel() {
+    const label = document.querySelector('.switch-label');
+    if (label) {
+      label.textContent = this.receiveUpdates.checked ? 'on' : 'off';
+    }
+  }
+  
+  validateEmail() {
+    const email = this.emailInput.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    if (!email) {
+      this.showEmailError('Email is required');
+      return false;
+    }
+    
+    if (!emailRegex.test(email)) {
+      this.showEmailError('Please enter a valid email address');
+      return false;
+    }
+    
+    this.clearEmailError();
+    return true;
+  }
+  
+  showEmailError(message) {
+    this.emailInput.setAttribute('aria-invalid', 'true');
+    this.emailError.textContent = message;
+    this.emailError.classList.add('d-block');
+    
+    // Display error dialog
+    document.getElementById('emailErrorMessage').textContent = message;
+    openDialog('dialogEmailError', this.scheduleButton);
+  }
+  
+  clearEmailError() {
+    this.emailInput.setAttribute('aria-invalid', 'false');
+    this.emailError.textContent = '';
+    this.emailError.classList.remove('d-block');
+  }
+  
+  submitForm(event) {
+    event.preventDefault();
+    
+    // Validate email
+    if (!this.validateEmail()) {
+      return;
+    }
+    
+    // Set button to busy state
+    this.scheduleButton.setAttribute('aria-busy', 'true');
+    this.scheduleButton.disabled = true;
+    
+    // Simulate form submission (replace with actual API call)
+    setTimeout(() => {
+      this.scheduleButton.setAttribute('aria-busy', 'false');
+      this.scheduleButton.disabled = false;
+      
+      // Display success dialog
+      document.getElementById('successMessage').textContent = 'Thank you! We have received your request. Our team will contact you soon.';
+      openDialog('dialogSuccess', this.scheduleButton);
+      
+      // Clear form fields
+      this.clearForm();
+    }, 1000);
+  }
+  
+  clearForm() {
+    document.getElementById('businessName').value = '';
+    document.getElementById('phoneNumber').value = '';
+    this.emailInput.value = '';
+    document.getElementById('check1').checked = false;
+    this.check2.checked = false;
+    document.getElementById('check3').checked = false;
+    document.getElementById('event').value = '';
+    document.getElementById('receiveUpdates').checked = true;
+    this.updateSwitchLabel();
+    
+    // Hide event section if it was shown
+    if (this.eventSection && !this.eventSection.hidden) {
+      this.eventSection.hidden = true;
+      this.eventSection.setAttribute('aria-hidden', 'true');
+      this.check2.checked = false;
+    }
+  }
+}
+
+// Initialize the form when the page loads
+window.addEventListener('load', function () {
+  // Existing code...
+  
+  // Initialize Schedule Form
+  new ScheduleForm();
+});
