@@ -17,33 +17,6 @@
     <link rel="stylesheet" href="EmpowerAbilityLab.css" />
   </head>
 
-   <!-- Terry changes -->
-  <!-- ADDED: COMMUNITY MODAL -->
-<div id="communityModal" class="custom-modal is-hidden">
-  <div class="custom-modal-content">
-
-    <h2>Community Steering Committee</h2>
-    <p>
-      We get aha! moments from product managers who try our services for the first time.
-      We have provided lab days, workshops, and usability testing services to many organizations including:
-    </p>
-
-    <ul>
-      <li>McGill University</li>
-      <li>Walmart.ca</li>
-      <li>Apple.ca</li>
-      <li>Google.ca</li>
-      <li>Government of Canada</li>
-    </ul>
-
-    <!-- ADDED CLOSE BUTTON -->
-    <button id="closeCommunityModal" class="btn btn-danger mt-2">Close</button>
-  </div>
-</div>
-<!-- END ADDED MODAL -->
-  
-
-
   <body>
     <header class="navbar navbar-expand-md">
       <!-- Description to alt text since it is the only website text-->
@@ -75,8 +48,8 @@
               for all. We offer a range of services designed to promote accessibility awareness, drive inclusivity, and enhance the user experience. And help you find answers on How do people with
               disabilities use technology and navigate the digital world? What tools do they employ?
             </p>
-             <!-- Terry changes -->
-            <button id="openCommunityModal" class="btn btn-primary">Meet the Empower Community!</button>
+            <!-- Changed button text to better describe what it is -->
+            <button type="button" onclick="openDialog('dialog1', this)">Meet The Empower Community!</button>
             <div class="row">
               <div class="col-md-4">
                 <!-- h3 to h2 -->
@@ -193,31 +166,16 @@
               <input class="form-check-input" type="checkbox" value="" id="check3" aria-label="Usability testing" tabindex="0" />
               <label class="form-check-label" for="check3">Usability testing</label>
             </div>
-
-            <!-- Terry changes goes here-->
-            <!-- ADDED: This section is hidden by default -->
-            <div id="eventSection" class="mb-3 is-hidden">
-              <label for="event" class="form-label">Please tell us about your event</label>
-              <textarea class="form-control" id="event" rows="3"></textarea>
+            <div class="mb-3" id="eventSection" hidden>
+              <!-- Added aria-labelledby to associate label with textarea, set aria-hidden to true to hide label from screen reader, and set hidden attribute to hide textarea from all users -->
+              <label for="event" class="form-label" id="eventLabel">Please tell us about your event</label>
+              <textarea class="form-control" id="event" rows="3" aria-labelledby="eventLabel"></textarea>
             </div>
-
-            <!-- Terry changes-->
-            <!-- ADDED: IMAGE-BASED SWITCH -->
-            <div class="image-switch-container">
-              <label for="receiveUpdates" class="form-label">Receive emails about updates and services</label>
-
-              <img
-                id="switchImage"
-                src="./images/switch-off.png"
-                alt="switch button"
-                class="switch-image"
-              />
-
-              <input type="checkbox" id="receiveUpdates" class="d-none">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="receiveUpdates" checked aria-label="Receive emails about updates and services" />
+              <label class="form-check-label" for="receiveUpdates">Receive emails about updates and services</label>
             </div>
-
-
-            <button type="button" class="btn btn-primary">Schedule a call</button>
+            <button type="button" class="btn btn-primary" id="scheduleButton" aria-busy="false">Schedule a call</button>
           </div>
         </div>
       </div>
