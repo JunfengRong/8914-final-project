@@ -619,6 +619,10 @@ aria.Utils.bindMethods = function (object /* , ...methodNames */) {
  * - Email validation
  * - Success/Error message display via JS alert
  */
+/**
+ * @class
+ * @description Manages the Schedule a Call form
+ */
 class ScheduleForm {
   constructor() {
     this.check2 = document.getElementById('check2');
@@ -628,7 +632,6 @@ class ScheduleForm {
     this.emailError = document.getElementById('emailError');
     this.receiveUpdates = document.getElementById('receiveUpdates');
     
-    // Add event listeners
     if (this.check2 && this.eventSection) {
       this.check2.addEventListener('change', this.onCheck2Change.bind(this));
     }
@@ -649,7 +652,6 @@ class ScheduleForm {
   }
   
   onCheck2Change(event) {
-    // Show/hide the event textarea based on checkbox state
     if (event.target.checked) {
       this.eventSection.hidden = false;
       this.eventSection.setAttribute('aria-hidden', 'false');
@@ -689,7 +691,6 @@ class ScheduleForm {
     this.emailError.textContent = message;
     this.emailError.classList.add('d-block');
     
-    // Display error dialog
     document.getElementById('emailErrorMessage').textContent = message;
     openDialog('dialogEmailError', this.scheduleButton);
   }
@@ -703,25 +704,21 @@ class ScheduleForm {
   submitForm(event) {
     event.preventDefault();
     
-    // Validate email
     if (!this.validateEmail()) {
       return;
     }
     
-    // Set button to busy state
     this.scheduleButton.setAttribute('aria-busy', 'true');
     this.scheduleButton.disabled = true;
     
-    // Simulate form submission (replace with actual API call)
     setTimeout(() => {
       this.scheduleButton.setAttribute('aria-busy', 'false');
       this.scheduleButton.disabled = false;
       
-      // Display success dialog
-      document.getElementById('successMessage').textContent = 'Thank you! We have received your request. Our team will contact you soon.';
+      document.getElementById('successMessage').textContent = 
+        'Thank you! We have received your request. Our team will contact you soon.';
       openDialog('dialogSuccess', this.scheduleButton);
       
-      // Clear form fields
       this.clearForm();
     }, 1000);
   }
@@ -737,7 +734,6 @@ class ScheduleForm {
     document.getElementById('receiveUpdates').checked = true;
     this.updateSwitchLabel();
     
-    // Hide event section if it was shown
     if (this.eventSection && !this.eventSection.hidden) {
       this.eventSection.hidden = true;
       this.eventSection.setAttribute('aria-hidden', 'true');
