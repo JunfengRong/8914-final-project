@@ -3,6 +3,8 @@
 
 'use strict';
 
+var defaultService = "home"
+
 class TabsManual {
   constructor(groupNode) {
     console.log(111)
@@ -15,6 +17,9 @@ class TabsManual {
 
     this.tabs = Array.from(this.tablistNode.querySelectorAll('[role=tab]'));
     this.tabpanels = [];
+
+    var selectedObj = null
+    var service = location.hash.replace('#', '').trim();
 
     for (var i = 0; i < this.tabs.length; i += 1) {
       var tab = this.tabs[i];
@@ -31,9 +36,26 @@ class TabsManual {
         this.firstTab = tab;
       }
       this.lastTab = tab;
+      if (service === tab.getAttribute("id")){
+        selectedObj = tab
+      }
+      
     }
-
-    this.setSelectedTab(this.firstTab);
+    if (selectedObj == null) {
+        selectedObj = this.firstTab
+    }
+    this.setSelectedTab(selectedObj);
+    window.addEventListener('hashchange', () => {
+      var service = location.hash.replace('#', '');
+      if (service) {
+        for (var i = 0; i < this.tabs.length; i += 1) {
+          var tab = this.tabs[i]
+          if (service === tab.getAttribute("id")){
+            this.setSelectedTab(tab)
+          }
+        }
+      }
+    });
   }
 
   setSelectedTab(currentTab) {
@@ -139,7 +161,8 @@ class TabsManual {
   // Since this example uses buttons for the tabs, the click onr also is activated
   // with the space and enter keys
   onClick(event) {
-    this.setSelectedTab(event.currentTarget);
+    // this.setSelectedTab(event.currentTarget);
+    location.hash = event.currentTarget.getAttribute("id");
   }
 }
 
