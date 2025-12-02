@@ -293,3 +293,7 @@
 .form-control:valid {
   border-color: #28a745;
 }
+
+button:focus { 
+  outline: 2px solid rgb(36 116 214); 
+}
