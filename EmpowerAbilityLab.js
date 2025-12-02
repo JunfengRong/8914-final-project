@@ -715,8 +715,7 @@ class ScheduleForm {
       this.scheduleButton.setAttribute('aria-busy', 'false');
       this.scheduleButton.disabled = false;
       
-      document.getElementById('successMessage').textContent = 
-        'Thank you! We have received your request. Our team will contact you soon.';
+      document.getElementById('successMessage').textContent =  'Thank you! We have received your request. Our team will contact you soon.';
       openDialog('dialogSuccess', this.scheduleButton);
       
       this.clearForm();
