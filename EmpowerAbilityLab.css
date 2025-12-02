@@ -9,6 +9,10 @@
   font-family: "lucida grande", sans-serif;
 }
 
+button:focus {
+  outline: 2px solid rgb(36 116 214);
+}
+
 [role="tablist"] {
   min-width: 100%;
 }
