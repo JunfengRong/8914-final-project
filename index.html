@@ -46,7 +46,7 @@
               disabilities use technology and navigate the digital world? What tools do they employ?
             </p>
             <!-- Changed button text to better describe what it is -->
-            <button type="button" onclick="openDialog('dialog1', this)">Meet The Empower Community!</button>
+            <button type="button" onclick="openDialog('dialog1', this)" autofocus>Meet The Empower Community!</button>
             <div class="row">
               <div class="col-md-4">
                 <!-- Changed h3 -> h2 -->
@@ -162,7 +162,8 @@
               <label for="event" class="form-label" id="eventLabel">Please tell us about your event</label>
               <textarea class="form-control" id="event" rows="3" aria-labelledby="eventLabel"></textarea>
             </div>
-            <div class="form-check form-switch mb-3">
+            <div class="form-check form-switch mb-3" role="row">
+              <span class="col-form-label me-3"></span>
               <input class="form-check-input" type="checkbox" role="switch" id="receiveUpdates" checked aria-label="Receive emails about updates and services" />
               <label class="form-check-label" for="receiveUpdates">Receive emails about updates and services</label>
             </div>
@@ -191,21 +192,21 @@
           <li>Google.ca</li>
           <li>Government of Canada</li>
         </ul>
-        <button type="button" onclick="closeDialog(this)">Close</button>
+        <button type="button" onclick="closeDialog(this)" autofocus>Close</button>
       </div>
     </div>
     <!-- Email error dialog -->
     <div role="dialog" id="dialogEmailError" aria-labelledby="dialogEmailError_label" aria-modal="true" class="hidden">
       <h2 id="dialogEmailError_label" class="dialog_label">Validation Error</h2>
       <p id="emailErrorMessage"></p>
-      <button type="button" onclick="closeDialog(this)">Close</button>
+      <button type="button" onclick="closeDialog(this)" autofocus>Close</button>
     </div>
 
     <!-- Success message dialog -->
     <div role="dialog" id="dialogSuccess" aria-labelledby="dialogSuccess_label" aria-modal="true" class="hidden">
       <h2 id="dialogSuccess_label" class="dialog_label">Thank You!</h2>
       <p id="successMessage"></p>
-      <button type="button" onclick="closeDialog(this)">Close</button>
+      <button type="button" onclick="closeDialog(this)" autofocus>Close</button>
     </div>
     <script src="EmpowerAbilityLab.js"></script>
   </body>
