@@ -115,7 +115,7 @@
               </p>
             </div>
           </div>
-          <div id="tabpanel-3" role="tabpanel" aria-labelledby="tab-3" class="is-hidden">
+          <div id="tabpanel-3" role="tabpanel" class="is-hidden">
             <h1>Schedule a call content architecture</h1>
             <div class="row">
               <div class="col-10">
@@ -132,9 +132,9 @@
               </div>
             </div>
             <div class="mb-3 row">
-              <label for="phoneNumber" class="col-sm-3 col-form-label">Phone number (613-123-1234):</label>
+              <label for="phoneNumber" class="col-sm-3 col-form-label" >Phone number (613-123-1234):</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" id="phoneNumber" aria-labelledby="phoneNumberLabel" />
+                <input type="text" class="form-control" id="phoneNumber" />
               </div>
             </div>
             <div class="mb-3 row">
@@ -165,7 +165,7 @@
             <div class="form-check form-switch mb-3" role="row">
               <span class="col-form-label me-3"></span>
               <input class="form-check-input" type="checkbox" role="switch" id="receiveUpdates" checked aria-label="Receive emails about updates and services" />
-              <label class="form-check-label" for="receiveUpdates">Receive emails about updates and services</label>
+              <label class="form-check-label">Receive emails about updates and services</label>
             </div>
             <button type="button" class="btn btn-primary" id="scheduleButton" aria-busy="false">Schedule a call</button>
           </div>
@@ -176,6 +176,9 @@
     <footer class="container">
       <p>Copyright Accessible Knowledge Base 2023</p>
     </footer>
+
+    
+
      <div id="dialog_layer" class="dialogs">
       <div role="dialog" id="dialog1" aria-labelledby="dialog1_label" aria-modal="true" class="hidden">
         <h2 id="dialog1_label" class="dialog_label">Community Steering Committee</h2>
