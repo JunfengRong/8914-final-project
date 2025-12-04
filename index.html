@@ -19,16 +19,16 @@
 
   <body>
     <header class="navbar navbar-expand-md">
-      <a class="navbar-brand" href="https://www.google.ca/"><img src="./images/empowerabilitylabslogo.png" alt="logo" width="120" /></a>
+      <a class="navbar-brand" href="https://www.google.ca/"><img src="./images/empowerabilitylabslogo.png" alt="this is the logo image" width="120" /></a>
       <nav>
         <div role="tablist" aria-labelledby="tablist-1" class="automatic manual">
           <button id="home" type="button" role="tab" aria-selected="true" aria-controls="tabpanel-1">
             <span class="focus">Home</span>
           </button>
-          <button id="services" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-2" tabindex="-1">
+          <button id="services" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-2" >
             <span class="focus">Services</span>
           </button>
-          <button id="schedule" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-3" tabindex="-1">
+          <button id="schedule" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-3">
             <span class="focus">Schedule a call</span>
           </button>
         </div>
@@ -46,7 +46,7 @@
               disabilities use technology and navigate the digital world? What tools do they employ?
             </p>
             <!-- Changed button text to better describe what it is -->
-            <button type="button" onclick="openDialog('dialog1', this)">Meet The Empower Community!</button>
+            <button type="button" onclick="openDialog('dialog1', this)" autofocus>Meet The Empower Community!</button>
             <div class="row">
               <div class="col-md-4">
                 <!-- Changed h3 -> h2 -->
@@ -144,7 +144,7 @@
                 <div id="emailError" class="invalid-feedback" role="alert" aria-live="polite"></div>
               </div>
             </div>
-            <h3>What would you like to talk about:</h3>
+            <h2>What would you like to talk about:</h2>
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="" id="check1" aria-label="Awareness lab days and workshops" tabindex="0" />
               <label class="form-check-label" for="check1">Awareness lab days and workshops</label>
@@ -162,7 +162,8 @@
               <label for="event" class="form-label" id="eventLabel">Please tell us about your event</label>
               <textarea class="form-control" id="event" rows="3" aria-labelledby="eventLabel"></textarea>
             </div>
-            <div class="form-check form-switch mb-3">
+            <div class="form-check form-switch mb-3" role="row">
+              <span class="col-form-label me-3"></span>
               <input class="form-check-input" type="checkbox" role="switch" id="receiveUpdates" checked aria-label="Receive emails about updates and services" />
               <label class="form-check-label">Receive emails about updates and services</label>
             </div>
@@ -194,21 +195,21 @@
           <li>Google.ca</li>
           <li>Government of Canada</li>
         </ul>
-        <button type="button" onclick="closeDialog(this)">Close</button>
+        <button type="button" onclick="closeDialog(this)" autofocus>Close</button>
       </div>
     </div>
     <!-- Email error dialog -->
     <div role="dialog" id="dialogEmailError" aria-labelledby="dialogEmailError_label" aria-modal="true" class="hidden">
       <h2 id="dialogEmailError_label" class="dialog_label">Validation Error</h2>
       <p id="emailErrorMessage"></p>
-      <button type="button" onclick="closeDialog(this)">Close</button>
+      <button type="button" onclick="closeDialog(this)" autofocus>Close</button>
     </div>
 
     <!-- Success message dialog -->
     <div role="dialog" id="dialogSuccess" aria-labelledby="dialogSuccess_label" aria-modal="true" class="hidden">
       <h2 id="dialogSuccess_label" class="dialog_label">Thank You!</h2>
       <p id="successMessage"></p>
-      <button type="button" onclick="closeDialog(this)">Close</button>
+      <button type="button" onclick="closeDialog(this)" autofocus>Close</button>
     </div>
     <script src="EmpowerAbilityLab.js"></script>
   </body>
