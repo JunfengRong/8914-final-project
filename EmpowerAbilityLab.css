@@ -305,5 +305,5 @@ button:focus {
 }
 
 #scheduleButton:focus {
-  outline: 2px solid rgb(36, 214, 51);
+  outline: 2px solid #0070f4;
 }
