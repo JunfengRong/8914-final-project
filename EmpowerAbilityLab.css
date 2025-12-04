@@ -1,4 +1,6 @@
-
+body {
+    padding-top: 0rem !important;
+}
 
 .row {
   margin-left: 0px;
@@ -7,6 +9,10 @@
 
 .tabs {
   font-family: "lucida grande", sans-serif;
+}
+
+button:focus {
+  outline: 2px solid rgb(36 116 214);
 }
 
 [role="tablist"] {
